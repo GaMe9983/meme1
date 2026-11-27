@@ -245,12 +245,12 @@ footer p{color:var(--text-soft);font-size:1rem;display:flex;align-items:center;j
     <div class="divider"></div>
   </div>
   <div class="memories-grid">
-    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/letter/1.jpg" alt="memory"></div><p class="polaroid-caption">LOVE YOU</p></div>
-    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/letter/7.jpg" alt="memory"></div><p class="polaroid-caption">That laugh I'll never forget</p></div>
-    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/letter/2.png" alt="memory"></div><p class="polaroid-caption">Always by my side</p></div>
-    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/letter/4.jpg" alt="memory"></div><p class="polaroid-caption">A meeting in a month</p></div>
-    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/map/معجنات.jpg" alt="memory"></div><p class="polaroid-caption">Experiences We Shared</p></div>
-    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/letter/15.jpg" alt="memory"></div><p class="polaroid-caption">Beautiful moments</p></div>
+    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/1.jpg" alt="memory"></div><p class="polaroid-caption">LOVE YOU</p></div>
+    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/7.jpg" alt="memory"></div><p class="polaroid-caption">That laugh I'll never forget</p></div>
+    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/2.png" alt="memory"></div><p class="polaroid-caption">Always by my side</p></div>
+    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/4.jpg" alt="memory"></div><p class="polaroid-caption">A meeting in a month</p></div>
+    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/معجنات.jpg" alt="memory"></div><p class="polaroid-caption">Experiences We Shared</p></div>
+    <div class="polaroid fade-up"><div class="polaroid-img"><img src="media/15.jpg" alt="memory"></div><p class="polaroid-caption">Beautiful moments</p></div>
   </div>
 </section>
 
@@ -359,8 +359,8 @@ footer p{color:var(--text-soft);font-size:1rem;display:flex;align-items:center;j
    date     = shown under the photo in the pop-up (write it like "14 · 02 · 2025")
    label    = to move a name tag by hand add  {ld:[dx,dy]}  (dx = right/left, dy = down/up), e.g. P("ماني مكس",960,815,"store",62,"mani-mix",{ld:[0,20]})
    TIP: add #edit at the end of the page address, tap the map, and it shows x and y. */
-const PHOTO_DIR = "media/map/";   /* folder that holds the 25 place photos */
-const P = (name,x,y,type,w,id,o={}) => Object.assign({ name, x,y,type,w,  img: PHOTO_DIR + id, date: "dd · mm · yyyy",  text: ""},o);
+const PHOTO_DIR = "media/";   /* folder that holds the 25 place photos */
+const P = (name,x,y,type,w,id,o={}) => Object.assign({ name, x,y,type,w,  img: PHOTO_DIR + id, },o);
 const PLACES = [
   P("mutall",            205, 610, "lookout",    58, "المطل.png"),
   P("yasser-mall",         567, 320, "mall",       46, "ياسر مول.png"),
