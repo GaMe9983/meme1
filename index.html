@@ -144,24 +144,6 @@ footer p{color:var(--text-soft);font-size:1rem;display:flex;align-items:center;j
 @media(max-width:400px){.memories-grid{gap:.8rem}.polaroid{padding:.6rem .6rem 1.8rem}.polaroid-caption{font-size:1.05rem}.music-player{padding:10px 14px}.years-label span{letter-spacing:.2em}}
 
 
-/* photo booth */
-.bm{--rasp:#b8416f;--purple:#6b3fa0;font-family:'Playfair Display',serif;text-align:center;padding:90px 18px;color:var(--rasp)}
-.bm .lab{display:block;font-family:'Dancing Script',cursive;font-size:24px;color:#c75b86}
-.bm h2{font-size:clamp(32px,6vw,48px);font-weight:700}
-.bm h2::after{content:"";display:block;width:90px;height:2px;margin:12px auto 38px;background:linear-gradient(90deg,transparent,var(--rasp),transparent)}
-.bm-photo{background-size:cover;background-position:center;background-color:#f1c9d6}
-.bm-booth{position:relative;width:260px;margin:0 auto;filter:drop-shadow(0 24px 24px rgba(74,42,82,.4))}
-.bm-top{background:linear-gradient(180deg,#e9dff3,#b9a4d6 60%,#8f78b3);color:#2a1638;font-weight:700;font-size:19px;padding:9px;letter-spacing:.32em;border-radius:3px 3px 0 0}
-.bm-body{position:relative;height:340px;overflow:hidden;background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 12%,transparent 88%,rgba(0,0,0,.35)),repeating-linear-gradient(90deg,#2a1638 0 5px,#341d46 5px 8px,#25132f 8px 13px)}
-.bm-in{position:absolute;inset:16px;background:radial-gradient(circle at 50% 30%,#5a3d78,#120a1a);display:grid;place-items:center;color:#f3dcea;font-family:'Dancing Script',cursive;font-size:30px;box-shadow:inset 0 0 20px #000}
-.bm-cur{position:absolute;inset:16px;z-index:2;transform-origin:left;transition:transform 1.3s cubic-bezier(.7,0,.3,1);cursor:pointer;display:grid;place-items:center;color:#fbe6f0;font-family:'Dancing Script',cursive;font-size:26px;background:linear-gradient(180deg,rgba(0,0,0,.4),transparent 22%,transparent 70%,rgba(0,0,0,.35)),repeating-linear-gradient(90deg,#b8416f 0 9px,#d65f8d 9px 17px,#9c3159 17px 26px)}
-.bm-booth.open .bm-cur{transform:scaleX(.13)}
-.bm-booth.open .bm-cur span{opacity:0}
-.bm-strip{margin:-4px auto 0;width:120px;background:#fffdf8;padding:9px 9px 12px;box-shadow:0 10px 22px rgba(74,42,82,.35);max-height:0;overflow:hidden;opacity:0;transition:max-height 2.4s .9s ease-out,opacity .3s .9s}
-.bm-booth.open+.bm-strip{max-height:680px;opacity:1}
-.bm-strip .bm-photo{height:98px;margin-bottom:6px}
-.bm-strip em{display:block;font-family:'Dancing Script',cursive;font-style:normal;font-size:18px;color:var(--rasp)}
-
 
 /* illustrated memory map */
 .im{width:100%;--purple:#6b3fa0;--rasp:#b8416f;--cream:#fbf3e4;--ink:#4a2a52;font-family:'Playfair Display',serif;text-align:center;padding:90px 0;color:var(--rasp)}
@@ -218,10 +200,10 @@ footer p{color:var(--text-soft);font-size:1rem;display:flex;align-items:center;j
 <!-- ===================== HERO ===================== -->
 <section id="hero">
   <div class="floating-memories">
-    <div class="floating-memory"><img src="media/letter/1.jpg" alt=""></div>
-    <div class="floating-memory"><img src="media/letter/1.jpg" alt=""></div>
-    <div class="floating-memory"><img src="media/letter/1.jpg" alt=""></div>
-    <div class="floating-memory"><img src="media/letter/1.jpg" alt=""></div>
+    <div class="floating-memory"><img src="media/8.jpg" alt=""></div>
+    <div class="floating-memory"><img src="media/13.jpg" alt=""></div>
+    <div class="floating-memory"><img src="media/5.jpg" alt=""></div>
+    <div class="floating-memory"><img src="media/22.jpg" alt=""></div>
   </div>
 
   <div class="hero-content">
@@ -273,18 +255,6 @@ footer p{color:var(--text-soft);font-size:1rem;display:flex;align-items:center;j
 </section>
 
 <!-- ===================== PHOTO BOOTH ===================== -->
-<section class="bm">
-  <span class="lab">pull the curtain</span>
-  <h2>Photo Booth</h2>
-  <div class="bm-booth" id="bmBooth">
-    <div class="bm-top">PHOTOS</div>
-    <div class="bm-body">
-      <div class="bm-in">smile</div>
-      <div class="bm-cur" id="bmCur" tabindex="0" role="button" aria-label="Open the curtain"><span>tap to enter</span></div>
-    </div>
-  </div>
-  <div class="bm-strip" id="bmStrip"></div>
-</section>
 
 <!-- ===================== MEMORY MAP ===================== -->
 <section class="im">
@@ -374,22 +344,7 @@ footer p{color:var(--text-soft);font-size:1rem;display:flex;align-items:center;j
 </script>
 
 <!-- 2) photo booth -->
-<script>
-(function(){
-  /* ✏️ your 4 booth photos (inside the media folder) */
-  var BOOTH = [
-    { img: "media/booth1.jpg", date: "12.03.2025" },
-    { img: "media/booth2.jpg" },
-    { img: "media/booth3.jpg" },
-    { img: "media/booth4.jpg" }
-  ];
-  var booth=document.getElementById("bmBooth"), cur=document.getElementById("bmCur"), strip=document.getElementById("bmStrip");
-  strip.innerHTML = BOOTH.map(function(p){ return '<div class="bm-photo" style="background-image:url(\''+p.img+'\')"></div>'; }).join("") + "<em>"+(BOOTH[0].date||"")+"</em>";
-  function open(){ booth.classList.add("open"); }
-  cur.addEventListener("click", open);
-  cur.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } });
-})();
-</script>
+
 
 <!-- 3) illustrated memory map -->
 <script>
